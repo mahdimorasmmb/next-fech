@@ -14,7 +14,7 @@ const handler = async(req,res) =>{
         const {slug} = req.body;
         console.log('moras2')
         await res.revalidate(`/products/isr/${slug}`);
-        await res.revalidate(`products/isr`)
+        await res.revalidate(`/products/isr`)
         console.log('slug',slug)
         res.status(200).json({msg:"Product pages revaliodatre"})
     } catch (error) {
