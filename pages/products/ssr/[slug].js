@@ -25,12 +25,4 @@ export const getStaticProps = async (context) => {
 };
 
 
-export const getStaticPaths = async()=>{
-  const paths = await sanityClient.fetch(
-    '*[_type=="product" && defined(slug.current) && !(_id in path("drafts.**"))]{"params":{"slug":slug.current}}'
-  );
-  return {
-    paths,
-    fallback:false
-  }
-}
+

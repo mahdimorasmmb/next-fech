@@ -14,7 +14,7 @@ const Product = ({ product }) => {
 
 export default Product;
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
   const {slug} = context.params
   const product = await sanityClient.fetch(
     '*[_type=="product" && defined(slug.current) && !(_id in path("drafts.**")) && slug.current== $slug][0]{...,"slug":slug.current}',{slug}
@@ -23,3 +23,13 @@ export const getServerSideProps = async (context) => {
     props: { product },
   };
 };
+
+export const getStaticPaths = async()=>{
+  const paths = await sanityClient.fetch(
+    '*[_type=="product" && defined(slug.current) && !(_id in path("drafts.**"))]{"params":{"slug":slug.current}}'
+  );
+  return {
+    paths,
+    fallback:false
+  }
+}
