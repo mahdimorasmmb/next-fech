@@ -6,7 +6,7 @@ const Products = ({ products }) => {
   return (
     <div>
       {products.map((product) => (
-        <Link href={`/products/ssg/${product.slug}`} key={product._id}>
+        <Link href={`/products/isr/${product.slug}`} key={product._id}>
           <a>
             <p>{product.title}</p>
           </a>
