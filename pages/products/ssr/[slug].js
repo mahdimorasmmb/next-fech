@@ -3,6 +3,7 @@ import { sanityClient } from "../../../utils/sanity/client";
 import Link from "next/link";
 
 
+
 const Product = ({ product }) => {
   return (
     <div>
